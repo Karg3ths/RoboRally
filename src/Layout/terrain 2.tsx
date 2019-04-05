@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset version="1.2" tiledversion="1.2.2" name="terrain 2" tilewidth="32" tileheight="32" tilecount="400" columns="20">
- <image source="../../../../Desktop/tilesets/tileset01.png" width="640" height="640"/>
+ <image source="tileset01.png" width="640" height="640"/>
  <tile id="40">
   <objectgroup draworder="index">
    <object id="1" x="0.25" y="0" width="31.5" height="32.25"/>
