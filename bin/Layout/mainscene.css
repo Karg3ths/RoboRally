@@ -25,11 +25,14 @@
         radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);
 }
 .label {
-    -fx-font-family:"";
+    -fx-font-family:"Helvetica";
+    -fx-font-size: 30px;
+    -fx-text-fill: gray;
+    -fx-font-weight: bold;
 }
 .root {
     -fx-background-color:white;
-    -fx-background-image: url("../Layout/roborally.jpg");
+    -fx-background-image: url("../Layout/RoboBackground.jpg");
     -fx-background-repeat: stretch;
     fx-background-size: 900 800;
 }
