@@ -26,7 +26,7 @@ public class Game extends Application {
 	}
 
 	private void closeProgram() {
-		System.out.println("See ya!!"); // method which is needed for ending (closing) the program
+		System.out.println("See ya!!"); 
 		windowMenu.close();
 	}
 }
