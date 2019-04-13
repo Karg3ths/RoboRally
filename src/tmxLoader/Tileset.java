@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Tileset {
 	public static BufferedImage spawntile, endtile, grasstile, flowergrasstile, watertile, waterwithstonetile,
 			bricktile, stonetile, sandtile, flowersandtile;
-	public static BufferedImage robotPlayer, robotAI;
+	public static BufferedImage robotPlayer, robotAI, robotAI2, robotAI3;
 
 	public static void load() {
 
@@ -25,6 +25,10 @@ public class Tileset {
 		stonetile = loadImage("stone.png");
 		sandtile = loadImage("sand.png");
 		flowersandtile = loadImage("flowersand.png");
+		robotPlayer = loadImage("robotPlayer.png");
+        robotAI = loadImage("robotAI.png");
+        robotAI2 = loadImage("robotAI2.png");
+        robotAI3 = loadImage("robotAI3.png");
 	}
 
 	/**

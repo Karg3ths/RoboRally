@@ -55,10 +55,10 @@ private void addComponents() {
 }
 */
 private void checkTile(Robot robot, int x, int y) {
-    if (map.isTileRideable(x, y)) {
-        moveCar(car, x, y);
+    if (map.istileAccessable(x, y)) {
+        moveRobot(robot, x, y);
       //  checkForSpecialTiles(car, x, y);
     } else {
-        onCarCrash(car);
+        onRobotCrash(robot);
     }
 }
