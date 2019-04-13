@@ -31,9 +31,10 @@
     -fx-font-weight: bold;
 }
 .root {
-    -fx-background-color:white;
+    -fx-background-color:black;
     -fx-background-image: url("../Layout/RoboBackground.jpg");
     -fx-background-repeat: stretch;
-    fx-background-size: 900 800;
+    -fx-background-size: 900 800;
+    -fx-background-position: center center;
 }
 
