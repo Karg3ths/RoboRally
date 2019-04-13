@@ -75,6 +75,11 @@ public class MapReader {
 						Tile.WATERWITHSTONE);
 			} else if (imageFileName.equals("stone.png")) {
 				tileSet.put(Integer.parseInt(nodeList.item(i).getAttributes().item(0).getNodeValue()) + 1, Tile.STONE);
+			} else if (imageFileName.equals("sand.png")) {
+				tileSet.put(Integer.parseInt(nodeList.item(i).getAttributes().item(0).getNodeValue()) + 1, Tile.SAND);
+			} else if (imageFileName.equals("flowersand.png")) {
+				tileSet.put(Integer.parseInt(nodeList.item(i).getAttributes().item(0).getNodeValue()) + 1,
+						Tile.FLOWERSAND);
 			}
 		}
 		return tileSet;
@@ -83,7 +88,7 @@ public class MapReader {
 	public Tile[][] getMapData(String mapFileName, String tileSetFileName)
 			throws IOException, ParserConfigurationException, SAXException {
 		int[][] mapInt = getIntData(mapFileName);
-		HashMap<Integer,Tile> tileSet = getTileSet(tileSetFileName);
+		HashMap<Integer, Tile> tileSet = getTileSet(tileSetFileName);
 		Tile[][] mapTile = new Tile[mapInt.length][mapInt[0].length];
 		for (int y = 0; y < mapInt[0].length; y++) {
 			for (int x = 0; x < mapInt[0].length; x++) {

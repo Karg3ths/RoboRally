@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class Tileset {
 	public static BufferedImage spawntile, endtile, grasstile, flowergrasstile, watertile, waterwithstonetile,
-			bricktile, stonetile;
+			bricktile, stonetile, sandtile, flowersandtile;
 	public static BufferedImage robotPlayer, robotAI;
 
 	public static void load() {
@@ -23,6 +23,8 @@ public class Tileset {
 		waterwithstonetile = loadImage("waterwithstone.png");
 		bricktile = loadImage("brickwall.png");
 		stonetile = loadImage("stone.png");
+		sandtile = loadImage("sand.png");
+		flowersandtile = loadImage("flowersand.png");
 	}
 
 	/**
