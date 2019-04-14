@@ -17,36 +17,11 @@ import java.io.IOException;
  */
 public class Map extends JPanel {
 
-    /**
-     * The game of which the map is component.
-     */
     private Game game;
-    /**
-     * The size of the map.
-     */
     private int tileWidth, tileHeight;
-    /**
-     * The coordinates of the start.
-     */
-    private int[] start;
-    /**
-     * The array containing the tile types of all tiles.
-     */
+    private int[] spawn;
     private Tile[][] mapTile;
 
-    /**
-     * The Map class constructor. Initializes attributes of the map.
-     * Uses the DataReader class to get the required data from the map file.
-     * @param mapFileName the name of the map file from which the data for initialization of this map are to be gathered.
-     * @param tileSetFileName the name of the tile-set file which is to be used to 'translate'
-     *                        the data in numbers from the map file to the enum Tile format.
-     * @param game the instance of Game to which this map is going to be added.
-     * @throws StartNotFoundException thrown if there is no start on the map or there is more than one.
-     * @throws ParserConfigurationException
-     * @throws SAXException
-     * @throws IOException
-     * @see DataReader#getMapData(String, String)
-     */
     public Map(String mapFileName, String tileSetFileName, Game game) throws ParserConfigurationException, SAXException, IOException {
         this.game = game;
         MapReader mr = new MapReader();
@@ -55,35 +30,42 @@ public class Map extends JPanel {
         tileHeight = mapTile.length;
         setSize(tileWidth * game.getTileSize(), tileHeight * game.getTileSize());
         setBackground(Color.BLACK);
-        findStart();
+        findSpawn();
     }
 
     /**
      * Finds the start on the map and saves its coordinates.
-     * @throws StartNotFoundException thrown if there is no start on the map or there is more than one.
      */
-    private void findStart() {
-        start = new int[2];
-        boolean startFound = false;
+    private void findSpawn() {
+        spawn = new int[2];
+        boolean spawnFound = false;
         for (int x = 0; x < tileWidth; x++) {
             for (int y = 0; y < tileHeight; y++) {
                 if (getTile(x, y) == Tile.SPAWN) {
-                    if (!startFound) {
-                        start[0] = x;
-                        start[1] = y;
-                        startFound = true;
+                    if (!spawnFound) {
+                        spawn[0] = x;
+                        spawn[1] = y;
+                        spawnFound = true;
                     } 
                 }
             }
         }
-        if (!startFound) {
+        if (!spawnFound) {
             System.out.println("No start found on the map");
         }
     }
+    private void checkForEnd() {
+        for (int x = 0; x < tileWidth; x++) {
+            for (int y = 0; y < tileHeight; y++) {
+                if (getTile(x, y) == Tile.END) {
+                    return;
+                }
+            }
+        }
+}
 
     /**
      * Paints each tile of the map with the corresponding texture.
-     * @param g
      */
     @Override
     public void paintComponent(Graphics g) {
@@ -200,7 +182,7 @@ public class Map extends JPanel {
      * Returns the coordinates of the start.
      * @return the coordinates of the start.
      */
-    public int[] getStart() {
-        return start;
+    public int[] getSpawn() {
+        return spawn;
     }
 }
