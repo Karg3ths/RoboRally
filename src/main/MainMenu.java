@@ -1,12 +1,22 @@
 package main;
 
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+
+import javax.imageio.ImageIO;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import tmxLoader.Tileset;
+import tmxLoader.MapReader;
 
 /**
  * List of all Buttons, Scenes etc. which are used;
@@ -15,16 +25,17 @@ import javafx.stage.Stage;
 public class MainMenu {
 
 	public Button helpButton, scoreButton, aboutButton, exitButton, backButton0, newgameButton, backButton1, backButton2, backButton3, backButton4,
-				  mapBarrens, mapXXXXXD;
+				  mapBarrens, mapDesert;
 	public Stage mainWindow;
 	public Scene mainScene, aboutScene, helpScene, scoreScene, mapSelectionScene;
 	public Label labelMain, labelMapSelection;
 	public VBox mainVbox;
+	public TextArea helpTextArea, aboutTextArea;
 
 	public MainMenu() {
 		mainVbox = new VBox();
 		mainWindow = new Stage();
-		
+		 
 		mainWindow.getIcons().add(new Image("Layout/RoboLogo.jpg"));
 		mainWindow.setTitle("RoboRally");
 		
@@ -33,21 +44,27 @@ public class MainMenu {
 		Label labelScore = new Label(" ");
 		Label labelHelp = new Label(" ");
 		Label labelMapSelection = new Label("Select the map");
+		TextArea aboutTextArea = new TextArea();
+		TextArea helpTextArea = new TextArea();
+		
+		MapReader mr = new MapReader();
+ 
+		
 	/**
 	 * setting up what will each button do (Switching the scenes);	
 	 */
 		newgameButton = new Button("New Game");
 		newgameButton.setOnAction(e -> mainWindow.setScene(mapSelectionScene));
-
+	/*
 		helpButton = new Button("Help");
 		helpButton.setOnAction(e -> mainWindow.setScene(helpScene));
-
-	/*	scoreButton = new Button("Score");
+		 
+		scoreButton = new Button("Score");
 		scoreButton.setOnAction(e -> mainWindow.setScene(scoreScene));
-    */
+    
 		aboutButton = new Button("About");
 		aboutButton.setOnAction(e -> mainWindow.setScene(aboutScene));
-
+	*/
 		backButton0 = new Button("Back");
 		backButton0.setOnAction(e -> mainWindow.setScene(mainScene));
 		
@@ -63,26 +80,28 @@ public class MainMenu {
 		mapBarrens = new Button("Barrens");
 		mapBarrens.setOnAction(e -> labelMapSelection.setText("Coming soon"));
 		
-		mapXXXXXD = new Button("Coming Soon");
-		mapXXXXXD.setOnAction(e -> labelMapSelection.setText("Coming soon"));
+		mapDesert = new Button("Desert");
+		mapDesert.setOnAction(e -> labelMapSelection.setText("Coming soon"));
 
 		exitButton = new Button("Exit");
 		exitButton.setOnAction(e -> closeProgram());
 
 /**
  * setting up parameters for each Scene(label,buttons, stylesheet);
+ * layoutAbout,score and help are not used in the final version of the game --> prepared for the future updates
  */
 		
 		VBox layoutMain = new VBox(50);
-		layoutMain.getChildren().addAll(labelMain, newgameButton, helpButton, aboutButton, exitButton);
+		layoutMain.getChildren().addAll(labelMain, newgameButton, exitButton);
 		mainScene = new Scene(layoutMain, 950, 800);
 		mainScene.getStylesheets().add(getClass().getResource("..\\Layout\\mainscene.css").toExternalForm());
 		layoutMain.setAlignment(Pos.CENTER);
 
-		VBox layoutAbout = new VBox(20);
-		layoutAbout.getChildren().addAll(labelAbout, backButton0);
+	/*	VBox layoutAbout = new VBox(20);
+		layoutAbout.getChildren().addAll(labelAbout, aboutTextArea, backButton0);
 		aboutScene = new Scene(layoutAbout, 950, 800);
 		aboutScene.getStylesheets().add(getClass().getResource("..\\Layout\\mainscene.css").toExternalForm());
+		aboutTextArea.setText("This game was created as my graduation project");
 		layoutAbout.setAlignment(Pos.CENTER);
 		
 		VBox layoutScore = new VBox(20);
@@ -92,13 +111,14 @@ public class MainMenu {
 		layoutScore.setAlignment(Pos.CENTER);
 		
 		VBox layoutHelp = new VBox(20);
-		layoutHelp.getChildren().addAll(labelHelp, backButton2);
+		layoutHelp.getChildren().addAll(labelHelp, helpTextArea, backButton2);
 		helpScene = new Scene(layoutHelp, 950, 800);
 		helpScene.getStylesheets().add(getClass().getResource("..\\Layout\\mainscene.css").toExternalForm());
+		helpTextArea.setText("Hello There....General");
 		layoutHelp.setAlignment(Pos.CENTER);
-		
+	*/	
 		VBox layoutMapSelection = new VBox(20);
-		layoutMapSelection.getChildren().addAll(labelMapSelection, mapBarrens, mapXXXXXD, backButton3);
+		layoutMapSelection.getChildren().addAll(labelMapSelection, mapBarrens, mapDesert, backButton3);
 		mapSelectionScene = new Scene(layoutMapSelection, 950, 800);
 		mapSelectionScene.getStylesheets().add(getClass().getResource("..\\Layout\\mainscene.css").toExternalForm());
 		layoutMapSelection.setAlignment(Pos.CENTER);
@@ -113,5 +133,10 @@ public class MainMenu {
 	private void closeProgram() {
 		mainWindow.close();
 	}
+/*	 String getMapName() {
+	        return (String)SelectedMap.getSelectedItem();
+	    }
+*/	 
+
 }
 

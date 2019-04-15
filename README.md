@@ -5,6 +5,7 @@ PC version based on the "table game" named "RoboRally" with AI interface.4
 
 - The goal of the game is to get to the finish in the least turns.
 - All robots start at the "SPAWN" tile.
+- In each turn player can move one tile
 
 ## Tiles
 
