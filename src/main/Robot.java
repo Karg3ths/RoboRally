@@ -2,7 +2,7 @@ package main;
 
 import main.Game;
 import tmxLoader.Tileset;
-import tmxLoader.RobotType;
+import tmxLoader.ROBOT;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,12 +13,12 @@ public class Robot extends JPanel {
 	private Game game;
 	private String playerName, aiName;
 	private int[] coordinates;
-	private RobotType type;
+	private ROBOT type;
 	private RobotAI robot;
 	private boolean finished;
 	private boolean crashed;
 
-	public Robot(String playerName, String aiName,RobotType type, RobotAI robot, Game game) {
+	public Robot(String playerName, String aiName,ROBOT type, RobotAI robot, Game game) {
 		this.playerName = playerName;
 		this.aiName = aiName;
 		this.game = game;
@@ -28,28 +28,22 @@ public class Robot extends JPanel {
 		setSize(game.getTileSize(), game.getTileSize());
 		setBackground(new java.awt.Color(0, 0, 0, 0));
 	}
-
-    /**
-     * Determines which texture should the car use and paints the car.
-     * Also paints the numbers representing the waiting time (in turns) after the car crashed.
-     * @param g
-     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         setSize(game.getTileSize(), game.getTileSize());
         BufferedImage image;
         switch (type) {
-            case AI:
+            case ROBOT2:
                 image = Tileset.robotAI;
                 break;
-            case AI2:
+            case ROBOT3:
                 image = Tileset.robotAI2;
                 break;
-            case AI3:
+            case ROBOT4:
                 image = Tileset.robotAI3;
                 break;
-            case PLAYER:
+            case ROBOT1:
                 image = Tileset.robotPlayer;
                 break;
         }
@@ -77,20 +71,14 @@ public class Robot extends JPanel {
     public int getTileY() {
         return coordinates[1];
     }
-    /**
-     * Sets the car to "crashed" and start the crash-countdown.
-     */
-    public void crashed() {
+   public void crashed() {
         crashed = true;
     }
+
     public void finished() {
         finished = true;
     }
-    /**
-     * Returns true if the car is crashed.
-     * @return true if the car is crashed.
-     */
-    public boolean isCrashed() {
+   public boolean isCrashed() {
         return crashed;
     }
 

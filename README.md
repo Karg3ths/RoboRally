@@ -12,3 +12,8 @@ PC version based on the "table game" named "RoboRally" with AI interface.4
 - GRASS, SAND, STONE, FLOWERGRASS, FLOWESAND, START, END --> player can move over them
 - BRICKWALL --> not accessible + player will recieve damage to his robot if he tries to
 - WATER, WATERWITHSTONE --> not accesible (right now players can not reach them) 
+
+## Current Version
+
+- In currrent version the only possible way how to move your robot is via W,A,S,D or Up,Left,Down,Right keys
+- By pressing "M" you will be returned back to the main menu.

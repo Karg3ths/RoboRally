@@ -1,6 +1,6 @@
 package main;
 
-import main.Game;
+import main.GameView;
 import tmxLoader.Tile;
 
 import org.xml.sax.SAXException;
@@ -51,7 +51,7 @@ public class Map extends JPanel {
             }
         }
         if (!spawnFound) {
-            System.out.println("No start found on the map");
+            System.out.println("No spawn found on the map");
         }
     }
     private void checkForEnd() {
@@ -164,10 +164,7 @@ public class Map extends JPanel {
         return tileHeight;
     }
 
-    /**
-     * Returns a deep copy of the 2d Tile array representing the map.
-     * @return a deep copy of the 2d Tile array representing the map.
-     */
+
     public Tile[][] getMapCopy() {
         Tile[][] mapCopy = new Tile[mapTile[0].length][mapTile.length];
         for (int x = 0; x < mapTile[0].length; x++) {
@@ -178,10 +175,6 @@ public class Map extends JPanel {
         return mapCopy;
     }
 
-    /**
-     * Returns the coordinates of the start.
-     * @return the coordinates of the start.
-     */
     public int[] getSpawn() {
         return spawn;
     }
